@@ -21,7 +21,7 @@ export default function Home({ data }) {
   );
 }
 export const getStaticProps = async () => {
-  const resp = await fetch(`${process.env.STRAPI_URL}/articles`);
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/articles`);
   const data = await resp.json();
 
   return {
