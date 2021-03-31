@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 
@@ -8,10 +9,12 @@ export default function Home({ data }) {
       <p>{process.env.NEXT_PUBLIC_DEMO}</p>
       <div className={styles.grid}>
         {data.map((article) => (
-          <a key={article.id} href="" className={styles.card}>
-            <h3>{article.title}</h3>
-            <p>{article.description}</p>
-          </a>
+          <Link key={article.id} href={`/articles/${article.slug}`}>
+            <a className={styles.card}>
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
+            </a>
+          </Link>
         ))}
       </div>
     </Layout>
