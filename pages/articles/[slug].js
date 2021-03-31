@@ -3,8 +3,6 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 const Article = ({ data }) => {
-  const [comments, setComments] = useState(data.comments);
-
   return (
     <Layout>
       <>
