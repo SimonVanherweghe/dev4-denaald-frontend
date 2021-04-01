@@ -55,7 +55,9 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const r = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/articles`);
+  const r = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/articles?_limit=3&_sort=id:desc`
+  );
   const data = await r.json();
 
   return {
@@ -64,6 +66,6 @@ export const getStaticPaths = async () => {
         slug: article.slug,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 };
