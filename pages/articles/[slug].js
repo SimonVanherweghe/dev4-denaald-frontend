@@ -3,8 +3,14 @@ import Layout from "../../components/Layout";
 import { useState } from "react";
 import AddComment from "../../components/AddComment";
 import ReactMarkdown from "react-markdown";
+import { useRouter } from "next/router";
 
 const Article = ({ data }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <p>Loading...</p>;
+  }
+
   const [comments, setComments] = useState(data.comments);
 
   const handleSubmit = async (comment) => {
