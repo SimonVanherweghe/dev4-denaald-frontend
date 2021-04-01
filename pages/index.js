@@ -9,11 +9,7 @@ export default function Home({ data }) {
       <p>{process.env.NEXT_PUBLIC_DEMO}</p>
       <div className={styles.grid}>
         {data.map((article) => (
-          <Link
-            key={article.id}
-            href={`/articles/${article.slug}`}
-            prefetch={false}
-          >
+          <Link key={article.id} href={`/articles/${article.slug}`}>
             <a className={styles.card}>
               <h3>{article.title}</h3>
               <p>{article.description}</p>

@@ -5,7 +5,7 @@ import AddComment from "../../components/AddComment";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 
-const Article = ({ data, date }) => {
+const Article = ({ data }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <p>Loading...</p>;
@@ -36,7 +36,6 @@ const Article = ({ data, date }) => {
     <Layout>
       <>
         <h2>{data.title}</h2>
-        <p>Build time: {date}</p>
         <ReactMarkdown source={data.content} escapeHtml={false} />
         <Comments comments={comments} />
         <AddComment onSubmit={handleSubmit} />
@@ -56,9 +55,8 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       data: data.pop(), // The pop() method in JavaScript removes the last element of an array and returns that element. It will remove an item from the end of an array and return that item.
-      date: new Date().toLocaleString(),
     },
-    //revalidate: 1,
+    revalidate: 1,
   };
 };
 
